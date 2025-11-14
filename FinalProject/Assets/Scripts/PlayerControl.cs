@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 4f;
 
     public GameObject laserPrefab;
-    public Transform firePoint;
+    public GameObject laserPos;
     public float fireRate = 0.25f;
 
     private float nextFireTime = 0f;
@@ -23,16 +23,11 @@ public class Player : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
         moveInput = new Vector2(moveX, moveY).normalized;
 
-        if (Input.GetKey(KeyCode.Space) && Time.time > nextFireTime)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Shoot();
+            GameObject laser = (GameObject)Instantiate(laserPrefab);
+            laser.transform.position = laserPos.transform.position;
         }
-    }
-
-    void Shoot()
-    {
-        nextFireTime = Time.time + fireRate;
-        Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
     }
 
     void FixedUpdate()
