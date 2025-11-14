@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 69862476}
   - component: {fileID: 69862475}
   - component: {fileID: 69862474}
+  - component: {fileID: 69862477}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -154,8 +155,8 @@ Camera:
   m_GameObject: {fileID: 69862473}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.1488824, g: 0.095318615, b: 0.3207547, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -180,7 +181,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -211,6 +212,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &69862477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69862473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
+--- !u!1 &461165549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461165551}
+  - component: {fileID: 461165550}
+  m_Layer: 0
+  m_Name: StarGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &461165550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461165549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395195d60bf7d4f408ce02111be16282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarGenerator
+  Star: {fileID: 2283510156084529019, guid: 50db4f8beecc98149894b5556999919a, type: 3}
+  maxStars: 40
+--- !u!4 &461165551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461165549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.9395, y: -0.27168, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1098223621462221256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219,17 +310,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 506064304457901286, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 506064304457901286, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 500783951
+      objectReference: {fileID: 0}
     - target: {fileID: 1259082938622348224, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
       propertyPath: m_Name
       value: UFO
       objectReference: {fileID: 0}
     - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14137
+      value: 1.061
       objectReference: {fileID: 0}
     - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11061
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
       propertyPath: m_LocalPosition.z
@@ -320,6 +419,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alien
       objectReference: {fileID: 0}
+    - target: {fileID: 5976835834262070264, guid: 095ab53c974d85a47a8d9931a79178c3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976835834262070264, guid: 095ab53c974d85a47a8d9931a79178c3, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 500783951
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -376,6 +483,14 @@ PrefabInstance:
     - target: {fileID: 4719484656893874396, guid: 1e2c5fbf4403b6848b36c052e407d453, type: 3}
       propertyPath: m_Name
       value: Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764452084194575364, guid: 1e2c5fbf4403b6848b36c052e407d453, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764452084194575364, guid: 1e2c5fbf4403b6848b36c052e407d453, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 500783951
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -434,6 +549,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Comet
       objectReference: {fileID: 0}
+    - target: {fileID: 4318987597756412908, guid: c6e4a1c74231d3442a0346c46093f6b0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318987597756412908, guid: c6e4a1c74231d3442a0346c46093f6b0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 500783951
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -453,11 +576,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328997803425614117, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.062
       objectReference: {fileID: 0}
     - target: {fileID: 2328997803425614117, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.626
       objectReference: {fileID: 0}
     - target: {fileID: 2328997803425614117, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -491,6 +614,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5554067649281044347, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5554067649281044347, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 500783951
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -506,3 +637,4 @@ SceneRoots:
   - {fileID: 7083866548527040330}
   - {fileID: 1098223621462221256}
   - {fileID: 6674522521314622325}
+  - {fileID: 461165551}

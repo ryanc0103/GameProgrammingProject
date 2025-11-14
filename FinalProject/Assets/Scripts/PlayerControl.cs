@@ -32,6 +32,6 @@ public class Player
     void Shoot()
     {
         nextFireTime = Time.time + fireRate;
-        Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
+        //Instantiate(laserPrefab, firePoint.position, firePoint.rotation);
     }
 }
