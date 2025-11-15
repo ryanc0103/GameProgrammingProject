@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -14,17 +15,19 @@ public class EnemySpawner : MonoBehaviour
     public float difficultyIncreaseRate = 0.05f;
     public float difficultyTimer;
 
-    private float timer;
-
-    private void Update()
+    private void Start()
     {
         timer += Time.deltaTime;
         difficultyTimer += Time.deltaTime;
 
-        if (timer >= spawnInterval)
+    private IEnumerator SpawnLoop()
+    {
+        yield return new WaitForSeconds(startDelay);
+
+        while (true)
         {
             SpawnEnemy();
-            timer = 0f;
+            yield return new WaitForSeconds(spawnInterval);
         }
 
         if(difficultyTimer > 5)
