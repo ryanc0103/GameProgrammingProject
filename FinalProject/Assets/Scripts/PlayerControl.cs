@@ -12,9 +12,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
+    //Sound effects
+    public AudioClip laserSfx;
+    private AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -27,6 +32,7 @@ public class Player : MonoBehaviour
         {
             GameObject laser = (GameObject)Instantiate(laserPrefab);
             laser.transform.position = laserPos.transform.position;
+            audioSource.PlayOneShot(laserSfx);
         }
     }
 

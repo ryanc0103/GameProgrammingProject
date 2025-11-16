@@ -448,11 +448,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886b7fe610af04242b593300e2320ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  purpleCometPrefab: {fileID: 4012610746009151692, guid: c6e4a1c74231d3442a0346c46093f6b0, type: 3}
   alienPrefab: {fileID: 5354344382601219212, guid: 095ab53c974d85a47a8d9931a79178c3, type: 3}
-  ufoPrefab: {fileID: 1259082938622348224, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
   spawnInterval: 1.5
-  startDelay: 2
+  minSpawnInterval: 0.4
+  maxSpawnRate: 8
+  difficultyIncreaseRate: 0.05
+  difficultyTimer: 0
 --- !u!1 &1095428924
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,11 +520,109 @@ MonoBehaviour:
   laserPrefab: {fileID: 2636895765936480129, guid: 1f0264d52e1595c4983415e8d4280b30, type: 3}
   laserPos: {fileID: 1673524373}
   fireRate: 0.25
+  laserSfx: {fileID: 8300000, guid: 8a71e32b9f53c44eda3eafcb3b60135a, type: 3}
 --- !u!4 &1210906527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2328997803425614117, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
   m_PrefabInstance: {fileID: 8749948221125035520}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1210906528
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210906518}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1386027895
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,8 +682,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SCORE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
-  m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -852,6 +951,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2291819537957993443, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1210906523}
+    - targetCorrespondingSourceObject: {fileID: 2291819537957993443, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1210906528}
   m_SourcePrefab: {fileID: 100100000, guid: b1a700d72c4a32e4aa98e1e9b7393c8b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
