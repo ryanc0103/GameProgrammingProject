@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public AudioClip damageSfx;
     private AudioSource audioSource;
 
+    private GameOver gameOver;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,10 +37,22 @@ public class Player : MonoBehaviour
             laser.transform.position = laserPos.transform.position;
             audioSource.PlayOneShot(laserSfx);
         }
+
     }
 
     void FixedUpdate()
     {
         rb.linearVelocity = moveInput * moveSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Alien"))
+        {
+            Debug.Log("Player collided with alien!");
+            audioSource.PlayOneShot(damageSfx);
+
+            gameOver.RestartGame();
+        }
     }
 }

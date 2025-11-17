@@ -3,64 +3,44 @@ using UnityEngine;
 
 public class UFO : MonoBehaviour
 {
-    public float speed = 2f;
-    public float moveDistance = 3f;
-    public float fireIntervalMin = 1.5f;
-    public float fireIntervalMax = 3.5f;
+
     public GameObject enemyLaserPrefab;
-    public int scoreValue = 200;
-
-    private float startX;
-    private float nextFireTime;
-    private int direction = 1;
-
-    private void Start()
-    {
-        startX = transform.position.x;
-        ScheduleNextShot();
-    }
+    public GameObject enemylaserPos;
+    public float fireRate = 1.5f;         // Seconds between shots
+    private float fireTimer = 0f;
 
     private void Update()
     {
-        transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+        fireTimer += Time.deltaTime;
 
-        if (Mathf.Abs(transform.position.x - startX) >= moveDistance)
+        if (fireTimer >= fireRate)
         {
-            direction *= -1; 
+            Shoot();
+            fireTimer = 0f;
         }
-
-        if (Time.time > nextFireTime)
-        {
-            //FireLaser();
-            ScheduleNextShot();
-        }
-
-        if (transform.position.y < -6f)
-            Destroy(gameObject);
     }
 
-    //private void FireLaser()
-    //{
-    //    Instantiate(enemyLaserPrefab, transform.position, Quaternion.identity);
-    //}
-
-    private void ScheduleNextShot()
+    void Shoot()
     {
-        nextFireTime = Time.time + Random.Range(fireIntervalMin, fireIntervalMax);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        if (enemyLaserPrefab == null || enemylaserPos == null)
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            Debug.LogError("UFO: Laser prefab or spawn point is NOT assigned!");
+            return;
         }
-        else if (collision.CompareTag("PlayerLaser"))
+
+        GameObject laser = Instantiate(enemyLaserPrefab);
+
+        // OPTIONAL: aim at player if the laser supports SetDirection()
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
         {
-            Destroy(collision.gameObject);
-            ScoreManager.Instance.AddScore(scoreValue);
-            Destroy(gameObject);
+            Vector2 dir = player.transform.position - laser.transform.position;
+
+            // If your laser has EnemyLaser script:
+            EnemyLaser el = laser.GetComponent<EnemyLaser>();
+            if (el != null)
+                el.SetDirection(dir);
         }
     }
 }
