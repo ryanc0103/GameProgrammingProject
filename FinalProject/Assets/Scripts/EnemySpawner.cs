@@ -3,10 +3,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject alienPrefab;
-
+    public GameObject ufoPrefab;
     //public GameObject purpleCometPrefab;
     //public GameObject alienPrefab;
-    //public GameObject ufoPrefab;
+    
 
     public float spawnInterval = 1.5f;
     public float minSpawnInterval = 0.4f;
@@ -44,6 +44,9 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject alien = (GameObject)Instantiate(alienPrefab);
         alien.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+
+        GameObject UFO = (GameObject)Instantiate(ufoPrefab);
+        UFO.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
     }
 
     private void increaseDifficulty()

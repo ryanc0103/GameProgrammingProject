@@ -3,44 +3,49 @@ using UnityEngine;
 
 public class UFO : MonoBehaviour
 {
+    public float speed = 2f;
+    public float horizontalSpeed = 1f;
+    public float direction;
+    public float minX, maxX;
 
-    public GameObject enemyLaserPrefab;
-    public GameObject enemylaserPos;
-    public float fireRate = 1.5f;         // Seconds between shots
-    private float fireTimer = 0f;
+    void Start()
+    {
+
+        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        minX = min.x + 0.25f;
+        maxX = max.x - 0.25f;
+
+        direction = Random.Range(-2f, 2f);
+    }
 
     private void Update()
     {
-        fireTimer += Time.deltaTime;
+        Vector2 position = transform.position;
 
-        if (fireTimer >= fireRate)
+        position.x += direction * horizontalSpeed * Time.deltaTime;
+        position.y -= speed * Time.deltaTime;
+
+        transform.position = position;
+
+        if(position.x < minX) 
         {
-            Shoot();
-            fireTimer = 0f;
+            position.x = minX;
+            direction = 1f;
+        } else if(position.x > maxX)
+        {
+            position.x = maxX;
+            direction = -1f;
         }
-    }
 
-    void Shoot()
-    {
-        if (enemyLaserPrefab == null || enemylaserPos == null)
+        transform.position = position;  
+
+
+        Vector2 bottomScreen = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        if (transform.position.y < bottomScreen.y)
         {
-            Debug.LogError("UFO: Laser prefab or spawn point is NOT assigned!");
-            return;
-        }
-
-        GameObject laser = Instantiate(enemyLaserPrefab);
-
-        // OPTIONAL: aim at player if the laser supports SetDirection()
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-
-        if (player != null)
-        {
-            Vector2 dir = player.transform.position - laser.transform.position;
-
-            // If your laser has EnemyLaser script:
-            EnemyLaser el = laser.GetComponent<EnemyLaser>();
-            if (el != null)
-                el.SetDirection(dir);
+            Destroy(gameObject);
         }
     }
 }

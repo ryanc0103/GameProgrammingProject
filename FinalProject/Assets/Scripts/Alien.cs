@@ -4,11 +4,9 @@ public class Alien : MonoBehaviour
 {
     public float speed;
 
-    private float startX;
-
     private void Start()
     {
-        speed = 2f;
+        speed = 3f;
     }
 
     private void Update()

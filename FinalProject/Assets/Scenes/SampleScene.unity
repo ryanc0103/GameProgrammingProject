@@ -404,71 +404,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &799037893
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1259082938622348224, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_Name
-      value: UFO
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.0851903
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.8021582
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7056153352894086978, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
 --- !u!1 &855511388
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   alienPrefab: {fileID: 5354344382601219212, guid: 095ab53c974d85a47a8d9931a79178c3, type: 3}
+  ufoPrefab: {fileID: 1259082938622348224, guid: 750a5babac922e3469fb5f64e979e130, type: 3}
   spawnInterval: 1.5
   minSpawnInterval: 0.4
   maxSpawnRate: 8
@@ -1032,4 +968,3 @@ SceneRoots:
   - {fileID: 421395107}
   - {fileID: 1442547699}
   - {fileID: 1095428926}
-  - {fileID: 799037893}
